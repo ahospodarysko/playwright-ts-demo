@@ -1,14 +1,15 @@
 # ts-demo
 
 A small demo project showing basic Playwright + TypeScript test automation
-against a tiny website built for this repo: a login page and a QA-engineer
-"CV" home page.
+against a tiny website built for this repo: a login page and a simple
+welcome home page.
 
 ## What's here
 
 - `site/` — the app under test. Static HTML/CSS/JS, no framework:
   - `login.html` — sign-in form
-  - `index.html` — profile/home page, shown only after logging in
+  - `index.html` — welcome home page ("Hello, its Playwright TS demo
+    project"), shown only after logging in
   - `app.js` — client-side auth (checked against hardcoded demo credentials,
     session tracked via `sessionStorage`)
   - `styles.css` — styling for both pages
@@ -58,3 +59,17 @@ adding a new `.env.<name>` file and an `env=<name>` script.
 
 - `playwright.config.ts` — test project setup and the `webServer` that boots
   `server.js` on the active env's port
+
+## CI & the Allure report
+
+`.github/workflows/playwright.yml` runs the suite on every push/PR to `main`
+(and on demand via `workflow_dispatch`), then generates the Allure report and
+publishes it to GitHub Pages — replacing the `docs/` resume site that used to
+be served there. The report publishes even when tests fail (that's the point
+of a report), but the job itself is still marked failed so PR checks reflect
+the real test result.
+
+One-time setup: in the repo's **Settings → Pages**, change **Source** to
+**"GitHub Actions"** (it currently deploys from the `docs/` folder). After
+that, the latest report is available at the repo's Pages URL after each run
+on `main`.
