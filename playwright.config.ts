@@ -4,7 +4,7 @@ import { EnvHelper } from "./helpers/envHelper";
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
-  reporter: "list",
+  reporter: [["allure-playwright", { detail: false }]],
   use: {
     baseURL: EnvHelper.BASE_URL,
     trace: "retain-on-failure",

@@ -5,7 +5,7 @@ test.describe("login", () => {
     await login(VALID_USERNAME, VALID_PASSWORD);
 
     await expect(page).toHaveURL(/index\.html/);
-    await expect(homePage.heading).toHaveText("Andrew Hospodarysko");
+    await expect(homePage.heading).toHaveText("Hello, its Playwright TS demo project");
   });
 
   test("shows an error on invalid credentials", async ({ page, login, loginPage }) => {

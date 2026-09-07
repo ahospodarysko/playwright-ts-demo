@@ -6,22 +6,20 @@ export class HomePage {
   readonly page: Page;
   readonly heading;
   readonly logoutButton;
-  readonly experienceItems;
 
   constructor(page: Page) {
     this.page = page;
     this.heading = page.getByTestId("page-heading");
     this.logoutButton = page.getByTestId("logout-button");
-    this.experienceItems = page.getByTestId("experience-item");
   }
 
   async goto() {
-    LoggerHelper.logStep("navigate to home page");
+    await LoggerHelper.logStep("navigate to home page");
     await this.page.goto("/");
   }
 
   async logout() {
-    LoggerHelper.logStep("logout");
+    await LoggerHelper.logStep("logout");
     await this.logoutButton.click();
   }
 }

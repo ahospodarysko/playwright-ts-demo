@@ -5,8 +5,7 @@ test.describe("home page", () => {
     await login();
   });
 
-  test("shows the profile summary and tech stack", async ({ page }) => {
-    await expect(page.getByTestId("summary-text")).toContainText("QA Automation Engineer");
-    await expect(page.getByText("Selenium, Selenide, Playwright, RestAssured")).toBeVisible();
+  test("shows the welcome heading", async ({ homePage }) => {
+    await expect(homePage.heading).toHaveText("Hello, its Playwright TS demo project");
   });
 });

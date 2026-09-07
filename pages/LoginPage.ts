@@ -18,12 +18,12 @@ export class LoginPage {
   }
 
   async goto() {
-    LoggerHelper.logStep("navigate to login page");
+    await LoggerHelper.logStep("navigate to login page");
     await this.page.goto("/login.html");
   }
 
   async login(username: string, password: string) {
-    LoggerHelper.logStep(`login as ${username}`);
+    await LoggerHelper.logStep(`login as ${username}`);
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
     await this.submitButton.click();
